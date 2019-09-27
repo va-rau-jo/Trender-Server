@@ -1,5 +1,0 @@
-#!/bin/bash
-
-export SPOTIFY_CLIENT_ID=89a06a30707441cfbdf8857d8851939b
-export SPOTIFY_CLIENT_SECRET=eff2fa1fa3274392af159c32a7c7c878
-npm start
