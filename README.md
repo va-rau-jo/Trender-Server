@@ -6,7 +6,7 @@ This service logs in to Spotify and redirects the user to the Trender frontend a
 
 In development mode, it assumes you are running the frontend on localhost:3000, but the server itself will be running on localhost:8888.
 
-Include the Spotify Client ID and Spotify Secret ID between sessions
+Run `npm install` after first cloning or forking the repo, and include the Spotify Client ID and Spotify Secret ID between sessions
 ```
 export SPOTIFY_CLIENT_ID=XXXX
 export SPOTIFY_CLIENT_SECRET=YYYY
