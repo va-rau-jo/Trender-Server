@@ -4,7 +4,7 @@ let querystring = require("querystring");
 
 let app = express();
 
-console.log(process.env);
+alert(process.env);
 let redirect_uri = process.env.REDIRECT_URI || "http://localhost:8888/callback";
 
 app.get("/", function(req, res) {
