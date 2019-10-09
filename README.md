@@ -1,4 +1,4 @@
-# Trender Server 
+# Trender Server
 
 This service logs in to Spotify and redirects the user to the Trender frontend application with a valid access token as a parameter in the url.
 
@@ -7,11 +7,13 @@ This service logs in to Spotify and redirects the user to the Trender frontend a
 In development mode, it assumes you are running the frontend on localhost:3000, but the server itself will be running on localhost:8888.
 
 Run `npm install` after first cloning or forking the repo, and include the Spotify Client ID and Spotify Secret ID between sessions
+
 ```
 export SPOTIFY_CLIENT_ID=XXXX
 export SPOTIFY_CLIENT_SECRET=YYYY
 npm start
 ```
+
 # Deploying to production
 
 This template is indended to be deployed on Heroku. After installing the heroku CLI tools you can run the below commands in the same directory as server.js(replacing abc123, cba456, mybackend and myfrontend with your actual stuff - the below example assume that you already have your frontend running on http://myfrontend.herokuapp.com.
