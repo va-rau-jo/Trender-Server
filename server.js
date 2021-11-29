@@ -13,11 +13,12 @@ if (!(process.env.SPOTIFY_CLIENT_ID && process.env.SPOTIFY_CLIENT_SECRET)) {
 
   app.get("/", function (_, res) {
     const scopes = [
+      'app-remote-control',
       'playlist-modify-private',
       'playlist-modify-public',
+      'playlist-read-collaborative',
       'playlist-read-private',
-      'user-read-email',
-      'user-read-private'];
+      'streaming'];
     const scopeString = scopes.join(' ');
 
     res.redirect('https://accounts.spotify.com/authorize' +
