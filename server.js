@@ -1,17 +1,17 @@
-let express = require("express");
-let request = require("request");
+let express = require('express');
+let request = require('request');
 
 let app = express();
 
 if (!(process.env.SPOTIFY_CLIENT_ID && process.env.SPOTIFY_CLIENT_SECRET)) {
-  console.log("You have to set the Spotify client id and client secret:")
-  console.log("  `export SPOTIFY_CLIENT_ID=XXXX`")
-  console.log("  `export SPOTIFY_CLIENT_SECRET=YYYY`")
+  console.log('You have to set the Spotify client id and client secret:')
+  console.log('  `export SPOTIFY_CLIENT_ID=XXXX`')
+  console.log('  `export SPOTIFY_CLIENT_SECRET=YYYY`')
 } else {
   const redirect_uri =
-    process.env.REDIRECT_URI || "http://localhost:8888/callback";
+    process.env.REDIRECT_URI || 'http://localhost:8888/callback';
 
-  app.get("/", function (_, res) {
+  app.get('/', function (_, res) {
     const scopes = [
       'app-remote-control',
       'playlist-modify-private',
@@ -28,29 +28,29 @@ if (!(process.env.SPOTIFY_CLIENT_ID && process.env.SPOTIFY_CLIENT_SECRET)) {
       '&redirect_uri=' + encodeURIComponent(redirect_uri));
   });
 
-  app.get("/callback", function(req, res) {
+  app.get('/callback', function(req, res) {
     const code = req.query.code || null;
     const authOptions = {
-      url: "https://accounts.spotify.com/api/token",
+      url: 'https://accounts.spotify.com/api/token',
       form: {
         code: code,
         redirect_uri,
-        grant_type: "authorization_code"
+        grant_type: 'authorization_code'
       },
       headers: {
         Authorization:
-          "Basic " +
+          'Basic ' +
           Buffer.from(
             process.env.SPOTIFY_CLIENT_ID +
-              ":" +
+              ':' +
               process.env.SPOTIFY_CLIENT_SECRET
-          ).toString("base64")
+          ).toString('base64')
       },
       json: true
     };
     request.post(authOptions, function(_, _, body) {
-      const uri = process.env.FRONTEND_URI || "http://localhost:3000";
-      res.redirect(uri + "?access_token=" + body.access_token);
+      const uri = (process.env.FRONTEND_URI || 'http://localhost:3000') + '/home';
+      res.redirect(uri + '?access_token=' + body.access_token);
     });
   });
 
