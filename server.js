@@ -18,7 +18,12 @@ if (!(process.env.SPOTIFY_CLIENT_ID && process.env.SPOTIFY_CLIENT_SECRET)) {
       'playlist-modify-public',
       'playlist-read-collaborative',
       'playlist-read-private',
-      'streaming'];
+      'streaming',
+      'user-modify-playback-state',
+      'user-read-private',
+      'user-read-email',
+      'user-read-playback-state',
+      'user-read-currently-playing'];
     const scopeString = scopes.join(' ');
 
     res.redirect('https://accounts.spotify.com/authorize' +
